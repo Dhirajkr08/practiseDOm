@@ -1,0 +1,33 @@
+body{
+    background-image: url('bckgrdImg.webp');
+    background-repeat: no-repeat;
+    
+    background-size: cover;
+    
+
+}
+h1{
+    text-align: center;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+input{
+    padding: 5px;
+    align-items: center;
+    border-radius: 1px;
+
+}
+form{
+    background-color: grey;
+    width: 500px;
+    text-align: center;
+    align-items: center;
+    padding: 5px;
+    border:1px solid grey;
+    margin:0 auto;
+    margin-top: 40px;
+    
+    
+
+
+}
