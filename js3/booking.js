@@ -53,7 +53,7 @@ function showUserOnScreen(userdata){
         userDetails.innerHTML+=userDetailsString
     }
     else{
-        console.log('Error:........')
+        console.log('Error:kindly check the details')
     }
 
 
