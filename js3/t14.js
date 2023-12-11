@@ -33,12 +33,10 @@ let lastActivityTime='';
         },2000)
     })
  }
- createPost({title:'POST3',body:'This is post three'})
- .then(updateLastUserActivityTime)
- .then(()=>{
-    getPost();
-    console.log('user last activity time updated:',lastActivityTime)
- })
+ Promise.all([
+    createPost({ title: 'POST3', body: 'This is post three' }),
+    updateLastUserActivityTime()
+  ])
  .then(()=>{
     const deletePost=posts.pop();
     if(deletePost){
@@ -56,4 +54,3 @@ let lastActivityTime='';
  
  .catch(err=>console.log(err));
 
- 

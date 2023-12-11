@@ -2,7 +2,7 @@
 
 const form=document.getElementById('addform');
 const list=document.getElementById('items');
-const link='https://crudcrud.com/api/0cd05321d7b9476dbe2016fe3affacdd/VDmadness';
+const link='https://crudcrud.com/api/dca8748f57294a8ab8a0a404a858dd14/VDmadness';
 
 //add eventListener
 form.addEventListener('submit',addItems);
@@ -41,12 +41,10 @@ function showUserOnScreen(userdata){
     }
 
     const userDetailsString=`
-    <li>Name:${userdata.name}</li>
-    <li>Email:${userdata.email}</li>
-    <li>Phone:${userdata.phone}</li>
-    <li>dateTime:${userdata.dateTime}</li>
-    <button onclick="editUser('${userdata.id}')">Edit</button>
-    <button onclick="editUser('${userdata.id}')">Delete</button>
+    <li>Name:${userdata.name}
+    Email:${userdata.email}
+    Phone:${userdata.phone}
+    dateTime:${userdata.dateTime}</li><button onclick="editUser('${userdata.id}')">Edit</button><button onclick="editUser('${userdata.id}')">Delete</button>
     <hr>
     `;
     if(userDetails){
