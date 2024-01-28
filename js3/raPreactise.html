@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>order-List</title>
+</head>
+<body>
+    <form id="form">
+        <input type="text" id="item" placeholder="enter your item" required>
+        <input type="text" id="price" placeholder="$" required>
+        <label for="option">Choose An Option</label>
+        <select id="option">
+            <option value="">select...</option>
+            <option value="option1">Skin Care</option>
+            <option value="option2">Grocery</option>
+            <option value="'option3">ElectronicItems</option>
+        </select>
+        <input type="submit" id="submit">
+    </form>
+    <div id="order">
+        <h2>ORDER LIST :-</h2>
+        <div id="order1">
+            <h2>SKIN CARE :-</h2>
+            <ul id="option1order"></ul>
+        </div>
+        <div id="order2">
+            <h2>GROCERY :- </h2>
+            <ul id="option2order"></ul>
+        </div>
+        <div id="order3">
+            <h2>ELECTRONICS ITEM</h2>
+            <ul id="option3order"></ul>
+        </div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/axios@1.1.2/dist/axios.min.js"></script>
+    <script src="pprapctise.jsdoc"></script>
+    
+</body>
+</html>

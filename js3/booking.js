@@ -2,10 +2,23 @@
 
 const form=document.getElementById('addform');
 const list=document.getElementById('items');
-const link='https://crudcrud.com/api/dca8748f57294a8ab8a0a404a858dd14/VDmadness';
+const link='https://crudcrud.com/api/1366ed0c5b694d74b98afbd96b216125/VDmadness/657981d46e31f903e8a920e7';
 
 //add eventListener
 form.addEventListener('submit',addItems);
+
+//eventlistener for list
+list.addEventListener('click',function(e){
+    e.preventDefault();
+    const target=event.target;
+    if(target.tagName==='BUTTON' && target.classList.contains('delete-button')){
+        const userId=target.dataset.userId;
+        if(userId){
+            deleteUser(userId)
+        }
+
+    }
+})
 
 //create function 
 function addItems(e){
@@ -26,7 +39,7 @@ function addItems(e){
             console.log(response)
         })
         .catch((err)=>{
-            console.error('Error:......')
+            console.error('Error:',err)
         })
     }
 }
@@ -44,7 +57,7 @@ function showUserOnScreen(userdata){
     <li>Name:${userdata.name}
     Email:${userdata.email}
     Phone:${userdata.phone}
-    dateTime:${userdata.dateTime}</li><button onclick="editUser('${userdata.id}')">Edit</button><button onclick="editUser('${userdata.id}')">Delete</button>
+    dateTime:${userdata.dateTime}</li><button onclick="editUser('${userdata.id}')">Edit</button><button onclick="deleteUser('${userdata.id}')">Delete</button>
     <hr>
     `;
     if(userDetails){
@@ -55,4 +68,20 @@ function showUserOnScreen(userdata){
     }
 
 
+}
+function deleteUser(userId){
+    axios.delete(`${link}/${userId}`)
+    .then ((response)=>{
+        removeUserFromScreen(userId)
+        console.log(response)
+    })
+    .catch((err)=>{
+        console.log(err)
+    })
+}
+function removeUserFromScreen(userId){
+    const userEle=document.getElementById(`user-${userId}`);
+    if(userEle){
+        userEle.remove();
+    }
 }

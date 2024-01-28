@@ -8,16 +8,20 @@
     form.addEventListener('submit', addItems);
 
     // Add event delegation for the "Delete" button clicks to the list
-    list.addEventListener('click', function (e) {
+    list.addEventListener('click', function (e){
         e.preventDefault();
         const target = e.target;
-        if (target.tagName === 'BUTTON' && target.classList.contains('delete-button')) {
+        if (target.tagName === 'BUTTON') {
             const userId = target.dataset.userId;
-            if (userId) {
+            if (target.classList.contains('delete-button')) {
                 deleteUser(userId);
-            }
+            }else if(target.classList.contains('edit-button')){
+                EditUserDetails(userId);
+
+
         }
-    });
+    }
+})
 
     // Create function to add items
     function addItems(e) {
@@ -59,7 +63,9 @@
                 Email: ${userdata.email}<br>
                 Phone: ${userdata.phone}<br>
                 dateTime: ${userdata.dateTime}
+                <button class="btn btn-black edit-button" data-user-id="${userdata._id}">Edit</button>
                 <button class="btn btn-danger delete-button" data-user-id="${userdata._id}">Delete</button>
+                <span class="edit-icon" data-user-id="${userdata._id}">&#9998;</span>
             </li>
             <hr>
         `;
@@ -91,3 +97,27 @@
         }
     }
 //});
+function EditUserDetails(userId) {
+    const userEle = document.getElementById(`user-${userId}`);
+    if (userEle) {
+        const nameElement = userEle.querySelector('li').childNodes[1];
+        const emailElement = userEle.querySelector('li').childNodes[3];
+        const phoneElement = userEle.querySelector('li').childNodes[5];
+        const dateTimeElement = userEle.querySelector('li').childNodes[7];
+
+        // Populate the form with the user details for editing
+        document.getElementById('username').value = nameElement.textContent.split(': ')[1];
+        document.getElementById('emailId').value = emailElement.textContent.split(': ')[1];
+        document.getElementById('phone').value = phoneElement.textContent.split(': ')[1];
+        document.getElementById('date').value = dateTimeElement.textContent.split(': ')[1];
+    }
+}
+
+// Function to clear the form
+function clearForm() {
+    document.getElementById('username').value = '';
+    document.getElementById('emailId').value = '';
+    document.getElementById('phone').value = '';
+    document.getElementById('date').value = '';
+}
+
